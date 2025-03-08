@@ -41,6 +41,7 @@ func main() {
 				Title:   category,
 				Message: args[0],
 				Icon:    icon,
+				ActivationArguments: interaction,
 			}
 
 			if err := notification.Push(); err != nil {
@@ -52,6 +53,7 @@ func main() {
 	rootCmd.Flags().BoolVarP(&showHelp, "help", "?", false, "Show a help message")
 	rootCmd.Flags().StringVarP(&icon, "icon", "i", "", "An icon filename to display (stock icons are not currently supported)")
 	rootCmd.Flags().StringVarP(&category, "category", "c", "wsl-notify-send", "Specifies the notification category")
+	rootCmd.Flags().StringVarP(&interaction, "act", "a", "wsl-notify-send", "Sets what to do upon interacting with the toast")
 	// Standard flags that are ignored
 	rootCmd.Flags().IntP("expire-time", "t", -1, "[Ignored in wsl-notiy-send]") // TODO - extend go-toast to support https://docs.microsoft.com/en-us/uwp/api/windows.ui.notifications.toastnotification.expirationtime?view=winrt-19041
 	rootCmd.Flags().StringArrayP("hint", "h", []string{}, "Ignored in wsl-notify-send")
