@@ -22,6 +22,7 @@ func main() {
 	var icon string
 	var category string
 	var appID string
+	var interaction string
 
 	rootCmd := &cobra.Command{
 		Use:   "wsl-notify-send",
